@@ -1,5 +1,3 @@
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "@/messages";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BookOpen, CheckCircle, Terminal, Settings, AlertCircle, FileText, Download, Globe } from "lucide-react";
@@ -10,24 +8,18 @@ export default async function DocsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages();
+  const isId = locale === "id";
 
   const navProps = {
     locale,
-    messages,
     logo: "/logo.png",
     githubRepo: "Curzyori/float-volume",
     stars: 0,
     brandColor: "purple" as const,
   };
 
-  const footerProps = {
-    copyright: messages.footer.copyright,
-    githubRepo: navProps.githubRepo,
-  };
-
   return (
-    <NextIntlClientProvider>
+    <>
       <Navbar {...navProps} />
       
       <main className="flex-1 pt-24 pb-16 px-4">
@@ -40,19 +32,17 @@ export default async function DocsPage({
               <BookOpen className="h-6 w-6" />
               Introduction
             </h2>
-            <div className="prose prose-neutral dark:prose-invert">
-              <p className="text-foreground/70 leading-relaxed">
-                Float Volume is a privacy-friendly floating volume control application for Android. 
-                Most Android volume controls are either too intrusive, packed with ads, or visually 
-                disconnected from the system. Float Volume solves that with a lightweight floating 
-                control that stays accessible without breaking focus.
-              </p>
-              <p className="text-foreground/70 leading-relaxed mt-4">
-                The main highlight is the <strong>transparent floating icon</strong>. It sits above 
-                your screen like a subtle assistive control, giving quick access to volume adjustment 
-                without opening system panels repeatedly.
-              </p>
-            </div>
+            <p className="text-foreground/70 leading-relaxed">
+              Float Volume is a privacy-friendly floating volume control application for Android.
+              Most Android volume controls are either too intrusive, packed with ads, or visually
+              disconnected from the system. Float Volume solves that with a lightweight floating
+              control that stays accessible without breaking focus.
+            </p>
+            <p className="text-foreground/70 leading-relaxed mt-4">
+              The main highlight is the <strong>transparent floating icon</strong>. It sits above
+              your screen like a subtle assistive control, giving quick access to volume adjustment
+              without opening system panels repeatedly.
+            </p>
           </section>
 
           {/* Features */}
@@ -142,9 +132,9 @@ cd float-volume
               How It Works
             </h2>
             <p className="text-foreground/70 leading-relaxed">
-              Float Volume creates a lightweight floating overlay that sits above other applications. 
-              When activated, it displays a minimal volume control interface that allows you to adjust 
-              system volume without navigating away from your current screen. The floating icon can be 
+              Float Volume creates a lightweight floating overlay that sits above other applications.
+              When activated, it displays a minimal volume control interface that allows you to adjust
+              system volume without navigating away from your current screen. The floating icon can be
               positioned anywhere on the screen and remains accessible while you use other apps.
             </p>
           </section>
@@ -174,14 +164,14 @@ cd float-volume
               License
             </h2>
             <p className="text-foreground/70">
-              This project is released under the <strong>GNU General Public License v3.0</strong>. 
+              This project is released under the <strong>GNU General Public License v3.0</strong>.
               See the LICENSE file for full text.
             </p>
           </section>
         </div>
       </main>
 
-      <Footer {...footerProps} />
-    </NextIntlClientProvider>
+      <Footer copyright="© 2026 Curzyori" githubRepo="Curzyori/float-volume" />
+    </>
   );
 }

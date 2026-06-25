@@ -1,5 +1,3 @@
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "@/messages";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -15,14 +13,12 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages();
 
   const navProps = {
     locale,
-    messages,
     logo: "/logo.png",
     githubRepo: "Curzyori/float-volume",
-    stars: 0, // Will be fetched at runtime
+    stars: 0,
     brandColor: "purple" as const,
   };
 
@@ -31,14 +27,14 @@ export default async function HomePage({
     name: "Float Volume",
     tagline: "Privacy-friendly floating volume control for Android",
     brandColor: "purple" as const,
-    ctaPrimary: messages.hero.ctaPrimary,
-    ctaSecondary: messages.hero.ctaSecondary,
+    ctaPrimary: locale === "id" ? "Unduh APK" : "Download APK",
+    ctaSecondary: locale === "id" ? "Lihat di GitHub" : "View on GitHub",
     githubRepo: navProps.githubRepo,
     downloadUrl: "https://github.com/Curzyori/float-volume/releases/latest",
   };
 
   const featuresProps = {
-    title: messages.features.title,
+    title: locale === "id" ? "Fitur" : "Features",
     features: [
       {
         title: "Transparent Floating Icon",
@@ -75,18 +71,18 @@ export default async function HomePage({
   };
 
   const installationProps = {
-    title: messages.installation.title,
-    subtitle: messages.installation.subtitle,
+    title: locale === "id" ? "Instalasi" : "Installation",
+    subtitle: locale === "id" ? "Build dari Source" : "Build from Source",
     code: "git clone https://github.com/Curzyori/float-volume.git\ncd float-volume\n./gradlew assembleRelease",
     brandColor: "purple" as const,
   };
 
   const downloadProps = {
-    title: messages.download.title,
+    title: locale === "id" ? "Unduh" : "Download",
     latestVersion: "v3.2.0",
-    versionLabel: messages.download.latestVersion,
+    versionLabel: locale === "id" ? "Versi Terbaru" : "Latest Version",
     files: [{ name: "Float-Volume-v3.2.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/v3.2.0/Float-Volume-v3.2.0.apk" }],
-    sourceCodeLabel: messages.download.sourceCode,
+    sourceCodeLabel: locale === "id" ? "Source Code" : "Source Code",
     sourceUrl: "https://github.com/Curzyori/float-volume",
     githubRepo: navProps.githubRepo,
     brandColor: "purple" as const,
@@ -100,12 +96,12 @@ export default async function HomePage({
   };
 
   const footerProps = {
-    copyright: messages.footer.copyright,
+    copyright: "© 2026 Curzyori",
     githubRepo: navProps.githubRepo,
   };
 
   return (
-    <NextIntlClientProvider>
+    <>
       <Navbar {...navProps} />
       <Hero {...heroProps} />
       <Features {...featuresProps} />
@@ -113,6 +109,6 @@ export default async function HomePage({
       <Preview {...previewProps} />
       <DownloadSection {...downloadProps} />
       <Footer {...footerProps} />
-    </NextIntlClientProvider>
+    </>
   );
 }
