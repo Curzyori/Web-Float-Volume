@@ -44,7 +44,7 @@ export default async function HomePage({
     ctaPrimary: locale === "id" ? "Unduh APK" : "Download APK",
     ctaSecondary: locale === "id" ? "Lihat di GitHub" : "View on GitHub",
     githubRepo: navProps.githubRepo,
-    downloadUrl: "https://github.com/Curzyori/float-volume/releases/tag/V3.2.0",
+    downloadUrl: "https://github.com/Curzyori/float-volume/releases/tag/V4.0.0",
   };
 
   const featuresProps = {
@@ -93,9 +93,10 @@ export default async function HomePage({
 
   const downloadProps = {
     title: locale === "id" ? "Unduh" : "Download",
-    latestVersion: "v3.2.0",
+    latestVersion: "v4.0.0",
     versionLabel: locale === "id" ? "Versi Terbaru" : "Latest Version",
     files: [
+      { name: "Float-Volume-v4.0.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/V4.0.0/Float-Volume-v4.0.0.apk" },
       { name: "Float-Volume-v3.2.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/V3.2.0/Float-Volume-v3.2.0.apk" },
       { name: "Float-Volume-v3.1.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/V3.1.0/Float-Volume-v3.1.0.apk" },
       { name: "Float-Volume-v3.0.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/V3.0.0/Float-Volume-v3.0.0.apk" },
