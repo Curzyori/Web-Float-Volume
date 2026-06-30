@@ -21,6 +21,7 @@ export async function generateMetadata({
   const isIndo = locale === "id";
 
   return {
+    metadataBase: new URL("https://float-volume.curzy.dev"),
     title: "Float Volume",
     description: isIndo
       ? "Kontrol volume mengambang yang ramah privasi untuk Android"
