@@ -22,6 +22,7 @@ export default async function DocsPage({
 }) {
   const { locale } = await params;
   const stars = await getGitHubStars("Curzyori/float-volume");
+  const isIndo = locale === "id";
 
   const navProps = {
     locale,
@@ -37,57 +38,76 @@ export default async function DocsPage({
       
       <main className="flex-1 pt-24 pb-16 px-4">
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-4xl font-bold mb-8">Float Volume Documentation</h1>
+          <h1 className="text-4xl font-bold mb-8">
+            {isIndo ? "Dokumentasi Float Volume" : "Float Volume Documentation"}
+          </h1>
           
           {/* Introduction */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <BookOpen className="h-6 w-6" />
-              Introduction
+              <BookOpen className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Pendahuluan" : "Introduction"}
             </h2>
             <p className="text-foreground/70 leading-relaxed">
-              Float Volume is a privacy-friendly floating volume control application for Android.
-              Most Android volume controls are either too intrusive, packed with ads, or visually
-              disconnected from the system. Float Volume solves that with a lightweight floating
-              control that stays accessible without breaking focus.
+              {isIndo
+                ? "Float Volume adalah aplikasi kontrol volume mengambang yang ramah privasi untuk Android. Sebagian besar kontrol volume Android terlalu agresif, penuh iklan, atau secara visual terputus dari sistem. Float Volume mengatasinya dengan kontrol mengambang ringan yang tetap dapat diakses tanpa mengganggu fokus."
+                : "Float Volume is a privacy-friendly floating volume control application for Android. Most Android volume controls are either too intrusive, packed with ads, or visually disconnected from the system. Float Volume solves that with a lightweight floating control that stays accessible without breaking focus."}
             </p>
             <p className="text-foreground/70 leading-relaxed mt-4">
-              The main highlight is the <strong>transparent floating icon</strong>. It sits above
-              your screen like a subtle assistive control, giving quick access to volume adjustment
-              without opening system panels repeatedly.
+              {isIndo
+                ? "Sorotan utamanya adalah <strong>ikon mengambang transparan</strong>. Ikon ini berada di atas layar Anda seperti kontrol asisten yang halus, memberikan akses cepat penyesuaian volume tanpa membuka panel sistem berulang kali."
+                : "The main highlight is the <strong>transparent floating icon</strong>. It sits above your screen like a subtle assistive control, giving quick access to volume adjustment without opening system panels repeatedly."}
             </p>
           </section>
 
           {/* Features */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <CheckCircle className="h-6 w-6" />
-              Features
+              <CheckCircle className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Fitur" : "Features"}
             </h2>
             <ul className="space-y-3 text-foreground/70">
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                <span><strong>Transparent Floating Icon</strong> — Subtle floating overlay icon that stays accessible without blocking the screen</span>
+                <span>
+                  <strong>{isIndo ? "Ikon Mengambang Transparan" : "Transparent Floating Icon"}</strong> —
+                  {isIndo ? " Ikon overlay mengambang halus yang tetap dapat diakses tanpa memblokir layar." : " Subtle floating overlay icon that stays accessible without blocking the screen."}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                <span><strong>Volume Control Overlay</strong> — Quickly adjust Android volume from a floating interface</span>
+                <span>
+                  <strong>{isIndo ? "Overlay Kontrol Volume" : "Volume Control Overlay"}</strong> —
+                  {isIndo ? " Sesuaikan volume Android dengan cepat dari antarmuka mengambang." : " Quickly adjust Android volume from a floating interface."}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                <span><strong>Ad-Free Experience</strong> — No ads, no tracking, no noisy monetization layer</span>
+                <span>
+                  <strong>{isIndo ? "Bebas Iklan" : "Ad-Free Experience"}</strong> —
+                  {isIndo ? " Tanpa iklan, tanpa pelacakan, tanpa lapisan monetisasi yang mengganggu." : " No ads, no tracking, no noisy monetization layer."}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                <span><strong>Privacy-Friendly</strong> — Designed as a local Android utility with minimal data exposure</span>
+                <span>
+                  <strong>{isIndo ? "Ramah Privasi" : "Privacy-Friendly"}</strong> —
+                  {isIndo ? " Dirancang sebagai utilitas Android lokal dengan paparan data minimal." : " Designed as a local Android utility with minimal data exposure."}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                <span><strong>Material Design 3</strong> — Modern Android UI language with clean spacing and tactile controls</span>
+                <span>
+                  <strong>Material Design 3</strong> —
+                  {isIndo ? " Bahasa UI Android modern dengan jarak bersih dan kontrol haptic." : " Modern Android UI language with clean spacing and tactile controls."}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                <span><strong>Prestige-Safe Stealth Aesthetic</strong> — Dark, minimal, premium visual direction for daily-use utility apps</span>
+                <span>
+                  <strong>{isIndo ? "Estetika Gelap" : "Dark Aesthetic"}</strong> —
+                  {isIndo ? " Arah visual gelap, minimal, premium untuk aplikasi utilitas sehari-hari." : " Dark, minimal, premium visual direction for daily-use utility apps."}
+                </span>
               </li>
             </ul>
           </section>
@@ -95,11 +115,13 @@ export default async function DocsPage({
           {/* Installation */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <Download className="h-6 w-6" />
-              Installation
+              <Download className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Instalasi" : "Installation"}
             </h2>
             <p className="text-foreground/70 mb-4">
-              Download the latest APK from the GitHub releases page:
+              {isIndo
+                ? "Unduh APK versi terbaru langsung dari halaman rilis GitHub:"
+                : "Download the latest APK from the GitHub releases page:"}
             </p>
             <div className="bg-secondary/50 rounded-lg p-4 mb-4">
               <p className="text-sm font-mono text-foreground/80">
@@ -109,7 +131,7 @@ export default async function DocsPage({
               </p>
             </div>
             
-            <h3 className="text-lg font-semibold mb-3">Build from Source</h3>
+            <h3 className="text-lg font-semibold mb-3">{isIndo ? "Build dari Source" : "Build from Source"}</h3>
             <div className="bg-secondary/50 rounded-lg p-4">
               <pre className="text-sm font-mono text-foreground/80 overflow-x-auto">
 {`# Clone the repository
@@ -125,15 +147,15 @@ cd float-volume
           {/* Tech Stack */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <Settings className="h-6 w-6" />
-              Tech Stack
+              <Settings className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Spesifikasi Teknologi" : "Tech Stack"}
             </h2>
             <ul className="space-y-2 text-foreground/70">
-              <li><strong>Platform:</strong> Android</li>
-              <li><strong>Language:</strong> Kotlin</li>
-              <li><strong>Build System:</strong> Gradle (Gradle Kotlin DSL)</li>
-              <li><strong>Design:</strong> Material Design 3</li>
-              <li><strong>UX Direction:</strong> Prestige-Safe Stealth Aesthetic</li>
+              <li><strong>{isIndo ? "Platform" : "Platform"}:</strong> Android</li>
+              <li><strong>{isIndo ? "Bahasa" : "Language"}:</strong> Kotlin</li>
+              <li><strong>{isIndo ? "Sistem Build" : "Build System"}:</strong> Gradle (Gradle Kotlin DSL)</li>
+              <li><strong>{isIndo ? "Desain" : "Design"}:</strong> Material Design 3</li>
+              <li><strong>{isIndo ? "Arah UX" : "UX Direction"}:</strong> Prestige-Safe Stealth Aesthetic</li>
               <li><strong>License:</strong> GPL-3.0</li>
             </ul>
           </section>
@@ -141,31 +163,30 @@ cd float-volume
           {/* How It Works */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <Globe className="h-6 w-6" />
-              How It Works
+              <Globe className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Cara Kerja" : "How It Works"}
             </h2>
             <p className="text-foreground/70 leading-relaxed">
-              Float Volume creates a lightweight floating overlay that sits above other applications.
-              When activated, it displays a minimal volume control interface that allows you to adjust
-              system volume without navigating away from your current screen. The floating icon can be
-              positioned anywhere on the screen and remains accessible while you use other apps.
+              {isIndo
+                ? "Float Volume membuat overlay mengambang ringan yang berada di atas aplikasi lain. Saat diaktifkan, aplikasi menampilkan antarmuka kontrol volume minimal yang memungkinkan Anda menyesuaikan volume sistem tanpa meninggalkan layar saat ini. Ikon mengambang dapat diposisikan di mana saja di layar dan tetap dapat diakses saat Anda menggunakan aplikasi lain."
+                : "Float Volume creates a lightweight floating overlay that sits above other applications. When activated, it displays a minimal volume control interface that allows you to adjust system volume without navigating away from your current screen. The floating icon can be positioned anywhere on the screen and remains accessible while you use other apps."}
             </p>
           </section>
 
           {/* Troubleshooting */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <AlertCircle className="h-6 w-6" />
-              Troubleshooting
+              <AlertCircle className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Pemecahan Masalah" : "Troubleshooting"}
             </h2>
             <div className="space-y-4">
               <div className="bg-secondary/30 rounded-lg p-4">
-                <h3 className="font-medium mb-2">The floating icon is not visible</h3>
-                <p className="text-foreground/70 text-sm">Make sure Float Volume has permission to display over other apps (Overlay permission). You can find this in Settings &gt; Apps &gt; Float Volume &gt; Permissions.</p>
+                <h3 className="font-medium mb-2">{isIndo ? "Ikon mengambang tidak terlihat" : "The floating icon is not visible"}</h3>
+                <p className="text-foreground/70 text-sm">{isIndo ? "Pastikan Float Volume memiliki izin untuk menampilkan di atas aplikasi lain (Izin Overlay). Anda dapat menemukannya di Pengaturan > Aplikasi > Float Volume > Izin." : "Make sure Float Volume has permission to display over other apps (Overlay permission). You can find this in Settings > Apps > Float Volume > Permissions."}</p>
               </div>
               <div className="bg-secondary/30 rounded-lg p-4">
-                <h3 className="font-medium mb-2">Volume adjustments are not working</h3>
-                <p className="text-foreground/70 text-sm">Ensure Float Volume has the necessary accessibility permissions. Some devices may require additional setup in your device&apos;s accessibility settings.</p>
+                <h3 className="font-medium mb-2">{isIndo ? "Penyesuaian volume tidak berfungsi" : "Volume adjustments are not working"}</h3>
+                <p className="text-foreground/70 text-sm">{isIndo ? "Pastikan Float Volume memiliki izin aksesibilitas yang diperlukan. Beberapa perangkat mungkin memerlukan pengaturan tambahan di pengaturan aksesibilitas perangkat Anda." : "Ensure Float Volume has the necessary accessibility permissions. Some devices may require additional setup in your device's accessibility settings."}</p>
               </div>
             </div>
           </section>
@@ -173,12 +194,12 @@ cd float-volume
           {/* License */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <FileText className="h-6 w-6" />
-              License
+              <FileText className="h-6 w-6 text-purple-500" />
+              {isIndo ? "Lisensi" : "License"}
             </h2>
             <p className="text-foreground/70">
-              This project is released under the <strong>GNU General Public License v3.0</strong>.
-              See the LICENSE file for full text.
+              {isIndo ? "Proyek ini dirilis di bawah " : "This project is released under the "}<strong>{isIndo ? "GNU General Public License v3.0" : "GNU General Public License v3.0"}</strong>.
+              {isIndo ? " Lihat file LICENSE untuk teks lengkap." : " See the LICENSE file for full text."}
             </p>
           </section>
         </div>

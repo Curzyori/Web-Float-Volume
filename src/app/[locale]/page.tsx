@@ -39,7 +39,7 @@ export default async function HomePage({
   const heroProps = {
     logo: "/logo.png",
     name: "Float Volume",
-    tagline: "Privacy-friendly floating volume control for Android",
+    tagline: locale === "id" ? "Kontrol volume mengambang yang ramah privasi untuk Android" : "Privacy-friendly floating volume control for Android",
     brandColor: "purple" as const,
     ctaPrimary: locale === "id" ? "Unduh APK" : "Download APK",
     ctaSecondary: locale === "id" ? "Lihat di GitHub" : "View on GitHub",
@@ -51,33 +51,45 @@ export default async function HomePage({
     title: locale === "id" ? "Fitur" : "Features",
     features: [
       {
-        title: "Transparent Floating Icon",
-        description: "Subtle floating overlay icon that stays accessible without blocking the screen",
+        title: locale === "id" ? "Ikon Mengambang Transparan" : "Transparent Floating Icon",
+        description: locale === "id"
+          ? "Ikon overlay mengambang halus yang tetap dapat diakses tanpa memblokir layar."
+          : "Subtle floating overlay icon that stays accessible without blocking the screen.",
         icon: Monitor,
       },
       {
-        title: "Volume Control Overlay",
-        description: "Quickly adjust Android volume from a floating interface",
+        title: locale === "id" ? "Overlay Kontrol Volume" : "Volume Control Overlay",
+        description: locale === "id"
+          ? "Sesuaikan volume Android dengan cepat dari antarmuka mengambang."
+          : "Quickly adjust Android volume from a floating interface.",
         icon: Volume2,
       },
       {
-        title: "Ad-Free Experience",
-        description: "No ads, no tracking, no noisy monetization layer",
+        title: locale === "id" ? "Bebas Iklan" : "Ad-Free Experience",
+        description: locale === "id"
+          ? "Tanpa iklan, tanpa pelacakan, tanpa lapisan monetisasi yang mengganggu."
+          : "No ads, no tracking, no noisy monetization layer.",
         icon: Zap,
       },
       {
-        title: "Privacy-Friendly",
-        description: "Designed as a local Android utility with minimal data exposure",
+        title: locale === "id" ? "Ramah Privasi" : "Privacy-Friendly",
+        description: locale === "id"
+          ? "Dirancang sebagai utilitas Android lokal dengan paparan data minimal."
+          : "Designed as a local Android utility with minimal data exposure.",
         icon: Lock,
       },
       {
         title: "Material Design 3",
-        description: "Modern Android UI language with clean spacing and tactile controls",
+        description: locale === "id"
+          ? "Bahasa UI Android modern dengan jarak bersih dan kontrol haptic."
+          : "Modern Android UI language with clean spacing and tactile controls.",
         icon: Palette,
       },
       {
-        title: "Dark Aesthetic",
-        description: "Dark, minimal, premium visual direction for daily-use utility apps",
+        title: locale === "id" ? "Estetika Gelap" : "Dark Aesthetic",
+        description: locale === "id"
+          ? "Arah visual gelap, minimal, premium untuk aplikasi utilitas sehari-hari."
+          : "Dark, minimal, premium visual direction for daily-use utility apps.",
         icon: Shield,
       },
     ],
@@ -102,7 +114,7 @@ export default async function HomePage({
       { name: "Float-Volume-v3.0.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/V3.0.0/Float-Volume-v3.0.0.apk" },
       { name: "Float-Volume-v2.0.0.apk", url: "https://github.com/Curzyori/float-volume/releases/download/V2.0.0/Float-Volume-v2.0.0.apk" },
     ],
-    sourceCodeLabel: locale === "id" ? "Source Code" : "Source Code",
+    sourceCodeLabel: "Source Code",
     sourceUrl: "https://github.com/Curzyori/float-volume",
     githubRepo: navProps.githubRepo,
     brandColor: "purple" as const,
@@ -118,6 +130,8 @@ export default async function HomePage({
   const footerProps = {
     copyright: "© 2026 Curzyori",
     githubRepo: navProps.githubRepo,
+    licenseName: "GPL-3.0",
+    licenseUrl: "https://github.com/Curzyori/float-volume/blob/main/LICENSE",
   };
 
   return (
