@@ -12,18 +12,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Float Volume",
-  description: "Privacy-friendly floating volume control for Android",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isIndo = locale === "id";
 
-export default function LocaleLayout({
+  return {
+    title: "Float Volume",
+    description: isIndo
+      ? "Kontrol volume mengambang yang ramah privasi untuk Android"
+      : "Privacy-friendly floating volume control for Android",
+    other: {
+      "og:title": "Float Volume",
+      "og:description": isIndo
+        ? "Kontrol volume mengambang yang ramah privasi untuk Android"
+        : "Privacy-friendly floating volume control for Android",
+      "og:image": "/og-image.png",
+      "og:type": "website",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Float Volume",
+      "twitter:description": isIndo
+        ? "Kontrol volume mengambang yang ramah privasi untuk Android"
+        : "Privacy-friendly floating volume control for Android",
+      "twitter:image": "/og-image.png",
+    },
+  };
+}
+
+export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         {children}
       </body>

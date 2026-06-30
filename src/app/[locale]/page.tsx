@@ -31,6 +31,7 @@ export default async function HomePage({
   const navProps = {
     locale,
     logo: "/logo.png",
+    name: "Float Volume",
     githubRepo: "Curzyori/float-volume",
     stars,
     brandColor: "purple" as const,
@@ -136,13 +137,23 @@ export default async function HomePage({
 
   return (
     <>
+      {/* Skip to main content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:font-medium focus:shadow-lg"
+      >
+        {locale === "id" ? "Lewati ke konten utama" : "Skip to main content"}
+      </a>
+
       <Navbar {...navProps} />
+      <main id="main-content">
       <Hero {...heroProps} />
       <Features {...featuresProps} />
       <Installation {...installationProps} />
       <Preview {...previewProps} />
       <DownloadSection {...downloadProps} />
-      <Footer {...footerProps} />
+      </main>
+      <Footer copyright="© 2026 Curzyori" githubRepo="Curzyori/float-volume" />
     </>
   );
 }

@@ -27,6 +27,7 @@ export default async function DocsPage({
   const navProps = {
     locale,
     logo: "/logo.png",
+    name: "Float Volume",
     githubRepo: "Curzyori/float-volume",
     stars,
     brandColor: "purple" as const,
@@ -34,9 +35,16 @@ export default async function DocsPage({
 
   return (
     <>
+      {/* Skip to main content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:font-medium focus:shadow-lg"
+      >
+        {isIndo ? "Lewati ke konten utama" : "Skip to main content"}
+      </a>
+
       <Navbar {...navProps} />
-      
-      <main className="flex-1 pt-24 pb-16 px-4">
+      <main id="main-content" className="flex-1 pt-24 pb-16 px-4">
         <div className="mx-auto max-w-4xl">
           <h1 className="text-4xl font-bold mb-8">
             {isIndo ? "Dokumentasi Float Volume" : "Float Volume Documentation"}
