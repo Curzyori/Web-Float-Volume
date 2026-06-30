@@ -153,7 +153,7 @@ export default async function HomePage({
       <Preview {...previewProps} />
       <DownloadSection {...downloadProps} />
       </main>
-      <Footer copyright="© 2026 Curzyori" githubRepo="Curzyori/float-volume" />
+      <Footer {...footerProps} />
     </>
   );
 }
